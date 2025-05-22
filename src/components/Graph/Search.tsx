@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import ForceGraph from 'react-force-graph-2d'
 import { Flex } from '../Flex'
 import { drawNodeLabel, drawNodePointerArea, generateGraphData } from './utils'
@@ -53,6 +53,14 @@ const Search = () => {
     setFilteredNodes(_nodes)
   }, [searchQuery])
 
+  const graphData = useMemo(
+    () => ({
+      nodes: filteredNodes,
+      links: filteredLinks,
+    }),
+    [filteredNodes, filteredLinks],
+  )
+
   return (
     <Flex flexDirection='column' gap={12}>
       <h3>Поиск</h3>
@@ -75,10 +83,7 @@ const Search = () => {
         <ForceGraph
           width={768}
           height={768}
-          graphData={{
-            nodes: filteredNodes,
-            links: filteredLinks,
-          }}
+          graphData={graphData}
           nodeCanvasObject={(node, ctx) =>
             drawNodeLabel({
               node,

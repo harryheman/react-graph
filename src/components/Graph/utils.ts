@@ -80,10 +80,10 @@ export type DrawNodeLabelProps = {
 
 // Дефолтные цвета
 export const defaultColors = {
-  nodeColor: '#8F8F8F',
-  activeNodeColor: '#0E72E5',
-  labelColor: '#1A1A1A',
-  tooltipColor: '#F7F7F7',
+  nodeColor: '#827e7e',
+  activeNodeColor: '#1d75db',
+  labelColor: '#1a1818',
+  tooltipColor: '#f7ebeb',
 }
 
 export const drawNodeLabel = ({
